@@ -1,0 +1,170 @@
+@font-face {
+    font-family: 'nebulousregular';
+    src: url('fonts/nebulousregular-54av-webfont.woff') format('woff'),
+         url('fonts/nebulousregular-54av-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'nebulousregular';
+    flex: 0 0 auto;
+
+}
+
+main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 4fr 3fr ;
+    grid-template-rows: 300px 600px;
+    background-color: aquamarine;
+    position: static;
+}
+
+.top-main1 {
+    width: 100%;
+    background-color: #ffa221;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    position: static;
+}
+
+.top-main2 {
+    width: 100%;
+    background-color: #F4A261;
+}
+
+.top-main3 {
+    width: 100%;
+    background-color: #ffa221;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.top-main4 {
+    width: 100%;
+    background-color: #E9C46A;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    box-shadow: 20px 0px 20px 0px rgba(0, 0, 0, 0.5);
+}
+
+.top-main5 {
+    width: 100%;
+    background-image: url(img/redwins.gif);
+    background-size: 110%;
+    background-position: center;
+    background-repeat: repeat;
+    position: static;
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.5);
+    /* animation: hideAnimation 0s ease-in 5s;
+    animation-fill-mode: forwards; */
+}
+
+/* @keyframes hideAnimation {
+    to {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+  } */
+
+.top-main6 {
+    width: 100%;
+    background-color: #E9C46A;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    box-shadow: 20px 0px 20px 0px rgba(0, 0, 0, 0.5);
+}
+
+.carimg {
+    padding: 30px;
+}
+
+#car01img {
+    width: 100%;
+}
+
+.money {
+    display: flex;
+    justify-content:center;
+    flex-wrap: nowrap;
+}
+
+.levels {
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    position: static;
+}
+
+.upgradelevels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 20px;
+    position: static;
+}
+
+.betfield {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    position: static;
+}
+
+.statusbar {
+    width: 150px;
+    height: 10px;
+    background-color: aliceblue;
+}
+
+#status01 {
+    width: 50px;
+    height: 10px;
+    background-color: rgb(5, 248, 14);
+}
+
+#status02 {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(5, 248, 14);
+}
+
+#status03 {
+    width: 70px;
+    height: 10px;
+    background-color: rgb(5, 248, 14);
+    /* background: linear-gradient(to right, rgb(0, 255, 0), red); */
+}
+
+#status04 {
+    width: 100px;
+    height: 10px;
+    background-color: rgb(5, 248, 14);
+}
+
+.top-main5 {
+    display: flex;
+    justify-content: center;
+}
+
+.roadback {
+    width: 600px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    position: relative;
+}
+
+.road {
+    height: 100%;
+    width: 40px;
+    background-color: black;
+    margin-left: 5px;
+    position: relative;
+}
+
