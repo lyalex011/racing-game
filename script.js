@@ -1,9 +1,35 @@
+// race animation container
+
+let animation = document.querySelector('.roadback')
+
+// popup elements
+let popUpWindow = document.querySelector('.overlay')
+let closeWindow = document.querySelector('.close')
+
 //bets
 
 let betPlayerOne = 0;
 let betPlayerTwo = 0;
 let playerSpeed01 = 1;
 let playerSpeed02 = 1;
+let readyStatus01 = false;
+let readyStatus02 = false;
+
+// money and xp displays
+
+let moneyPlayer01 = document.getElementById('money01')
+let moneyPlayer02 = document.getElementById('money02')
+
+//levels display 
+
+let enginelvl01 = 1;
+let translvl01 = 1;
+let brakeslvl01 = 1;
+let tireslvl01 = 1;
+let enginelvl02 = 1;
+let translvl02 = 1;
+let brakeslvl02 = 1;
+let tireslvl02 = 1;
 
 // class for players
 class Player {
@@ -69,6 +95,198 @@ function trackLevel() {
     return track
 }
 
+// UPGRADES !!!!!!
+// status bars player 01
+let engineDisplay01 = document.getElementById('status01')
+let transmissionDisplay01 = document.getElementById('status02')
+let brakesDisplay01 = document.getElementById('status03')
+let tiresDisplay01 = document.getElementById('status04')
+// status bars player 02
+let engineDisplay02 = document.getElementById('status0102')
+let transmissionDisplay02 = document.getElementById('status0202')
+let brakesDisplay02 = document.getElementById('status0302')
+let tiresDisplay02 = document.getElementById('status0402')
+// buttons player 01 
+let engineUpdateButton01 = document.getElementById('engine01')
+let transUpdateButton01 = document.getElementById('trans01')
+let brakesUpdateButton01 = document.getElementById('brakes01')
+let tiresUpdateButton01 = document.getElementById('tires01')
+// buttons player 02
+let engineUpdateButton02 = document.getElementById('engine02')
+let transUpdateButton02 = document.getElementById('trans02')
+let brakesUpdateButton02 = document.getElementById('brakes02')
+let tiresUpdateButton02 = document.getElementById('tires02')
+// lvl diplay Player 01
+let lvlEngine01 = document.getElementById('lvle01')
+let lvlTransmission01 = document.getElementById('lvlt01')
+let lvlBrakesine01 = document.getElementById('lvlb01')
+let lvlTires01 = document.getElementById('lvltr01')
+// lvl diplay Player 02
+let lvlEngine02 = document.getElementById('lvle02')
+let lvlTransmission02 = document.getElementById('lvlt02')
+let lvlBrakesine02 = document.getElementById('lvlb02')
+let lvlTires02 = document.getElementById('lvltr02')
+
+// update events + level upgrade
+
+transUpdateButton01.addEventListener('click', function(evt){
+    player01.money -= 100;
+    player01.transmission += 10
+    moneyPlayer01.innerText = `${player01.money}$  |`
+    transUpdateButton01.innerText = 'Upgraded'
+    transUpdateButton01.style.backgroundColor = '#F2BE22';
+    transUpdateButton01.disabled = true;
+    let style = window.getComputedStyle(transmissionDisplay01);
+    let widthValue = parseInt(style.width, 10);
+    if(widthValue % 150 === 0) {
+        translvl01 += 1;
+        transmissionDisplay01.style.width = `10px`;
+        lvlTransmission01.innerText = `Transmission (lvl 0${translvl01})`
+    }
+    else {
+        transmissionDisplay01.style.width = `${player01.transmission}px`;
+    }
+    
+})
+
+engineUpdateButton01.addEventListener('click', function(evt){
+    player01.money -= 100;
+    player01.engine += 10 
+    moneyPlayer01.innerText = `${player01.money}$  |`
+    engineUpdateButton01.innerText = 'Upgraded'
+    engineUpdateButton01.style.backgroundColor = '#F2BE22';
+    engineUpdateButton01.disabled = true;
+    let style = window.getComputedStyle(engineDisplay01);
+    let widthValue = parseInt(style.width, 10);
+    if(widthValue % 150 === 0) {
+        enginelvl01 += 1;
+        engineDisplay01.style.width = `10px`;
+        lvlEngine01.innerText = `Engine (lvl 0${enginelvl01})`
+    }
+    else {
+        engineDisplay01.style.width = `${player01.engine}px`;
+    }
+
+
+})
+
+brakesUpdateButton01.addEventListener('click', function(evt){
+    player01.money -= 100;
+    player01.brakes += 10 
+    moneyPlayer01.innerText = `${player01.money}$  |`
+    brakesUpdateButton01.innerText = 'Upgraded'
+    brakesUpdateButton01.style.backgroundColor = '#F2BE22';
+    brakesUpdateButton01.disabled = true;
+    let style = window.getComputedStyle(brakesDisplay01);
+    let widthValue = parseInt(style.width, 10);
+    if(widthValue % 150 === 0) {
+        brakeslvl01 += 1;
+        brakesDisplay01.style.width = `10px`;
+        lvlBrakesine01.innerText = `Brakes (lvl 0${brakeslvl01})`
+    }
+    else {
+        brakesDisplay01.style.width = `${player01.brakes}px`;
+    }
+})
+
+tiresUpdateButton01.addEventListener('click', function(evt){
+    player01.money -= 100;
+    player01.tires += 10 
+    moneyPlayer01.innerText = `${player01.money}$  |`
+    tiresUpdateButton01.innerText = 'Upgraded'
+    tiresUpdateButton01.style.backgroundColor = '#F2BE22';
+    tiresUpdateButton01.disabled = true;
+    let style = window.getComputedStyle(tiresDisplay01);
+    let widthValue = parseInt(style.width, 10);
+    if(widthValue % 150 === 0) {
+        tireslvl01 += 1;
+        tiresDisplay01.style.width = `10px`;
+        lvlTires01.innerText = `Tires (lvl 0${tireslvl01})`
+    }
+    else {
+        tiresDisplay01.style.width = `${player01.tires}px`;
+    }
+})
+
+transUpdateButton02.addEventListener('click', function(evt){
+    player02.money -= 100;
+    player02.transmission += 10 
+    moneyPlayer02.innerText = `${player02.money}$  |`
+    transUpdateButton02.innerText = 'Upgraded'
+    transUpdateButton02.style.backgroundColor = '#F2BE22';
+    transUpdateButton02.disabled = true;
+    let style = window.getComputedStyle(transmissionDisplay01);
+    let widthValue = parseInt(style.width, 10);
+    if(widthValue % 150 === 0) {
+        translvl02 += 1;
+        transmissionDisplay02.style.width = `10px`;
+        lvlTransmission02.innerText = `Transmission (lvl 0${translvl02})`
+    }
+    else {
+        transmissionDisplay02.style.width = `${player02.transmission}px`;
+    }
+})
+
+engineUpdateButton02.addEventListener('click', function(evt){
+    player02.money -= 100;
+    player02.engine += 10 
+    moneyPlayer02.innerText = `${player02.money}$  |`
+    engineUpdateButton02.innerText = 'Upgraded'
+    engineUpdateButton02.style.backgroundColor = '#F2BE22';
+    engineUpdateButton02.disabled = true;
+    let style = window.getComputedStyle(engineDisplay02);
+    let widthValue = parseInt(style.width, 10);
+    if(widthValue % 150 === 0) {
+        enginelvl02 += 1;
+        engineDisplay02.style.width = `10px`;
+        lvlEngine02.innerText = `Engine (lvl 0${enginelvl02})`
+    }
+    else {
+        engineDisplay02.style.width = `${player02.engine}px`;
+    }
+})
+
+brakesUpdateButton02.addEventListener('click', function(evt){
+    player02.money -= 100;
+    player02.brakes += 10 
+    moneyPlayer02.innerText = `${player02.money}$  |`
+    brakesUpdateButton02.innerText = 'Upgraded'
+    brakesUpdateButton02.style.backgroundColor = '#F2BE22';
+    brakesUpdateButton02.disabled = true;
+    let style = window.getComputedStyle(brakesDisplay02);
+    let widthValue = parseInt(style.width, 10);
+    if(widthValue % 150 === 0) {
+        brakeslvl02 += 1;
+        brakesDisplay02.style.width = `10px`;
+        lvlBrakesine02.innerText = `Brakes (lvl 0${brakeslvl02})`
+    }
+    else {
+        brakesDisplay02.style.width = `${player02.brakes}px`;
+    }
+})
+
+tiresUpdateButton02.addEventListener('click', function(evt){
+    player02.money -= 100;
+    player02.tires += 10 
+    moneyPlayer02.innerText = `${player02.money}$  |`
+    tiresUpdateButton02.innerText = 'Upgraded'
+    tiresUpdateButton02.style.backgroundColor = '#F2BE22';
+    tiresUpdateButton02.disabled = true;
+    let style = window.getComputedStyle(tiresDisplay02);
+    let widthValue = parseInt(style.width, 10);
+    if(widthValue % 150 === 0) {
+        tireslvl02 += 1;
+        tiresDisplay02.style.width = `10px`;
+        lvlTires02.innerText = `Tires (lvl 0${tireslvl02})`
+    }
+    else {
+        tiresDisplay02.style.width = `${player02.tires}px`;
+    }
+})
+
+
+
+
 
 // race 
 
@@ -77,7 +295,7 @@ let display01 = document.getElementById('')
 let display02 = document.getElementById('')
 let display03 = document.getElementById('')
 
-// race function
+// race function !!!!!!!!!
 
 function Race() {
     let var01 = Weather()
@@ -127,5 +345,78 @@ function Race() {
 }
 
 
+// bets and ready status
+
+let betButton01 = document.getElementById('betbutton')
+let betButton02 = document.getElementById('betbutton02')
+let readyButton01 = document.getElementById('readybutton')
+let readyButton02 = document.getElementById('readybutton02')
+
+betButton01.addEventListener('click', function(evt){
+    player01.money -= 100;
+    betPlayerOne = 100
+    moneyPlayer01.innerText = `${player01.money}$  |`
+    betButton01.innerText = 'Bet accepted'
+    betButton01.style.backgroundColor = '#F2BE22';
+    betButton01.disabled = true;
+    readyButton01.innerText = 'Ready'
+})
+
+betButton02.addEventListener('click', function(evt){
+    player02.money -= 100;
+    betPlayerTwo = 100;
+    moneyPlayer02.innerText = `${player02.money}$  |`
+    betButton02.innerText = 'Bet accepted'
+    betButton02.style.backgroundColor = '#F2BE22';
+    betButton02.disabled = true;
+    readyButton02.innerText = 'Ready'
+})
 
 
+readyButton01.addEventListener('click', function(evt){
+    if(betPlayerOne === 100) {
+        readyButton01.style.backgroundColor = 'rgb(5, 248, 14)';
+        readyButton01.disabled = true;
+        readyStatus01 = true;
+    }
+    else {
+        readyButton01.innerText = 'Bet first'
+    }
+})
+
+readyButton02.addEventListener('click', function(evt){
+    if(betPlayerTwo === 100) {
+        readyButton02.style.backgroundColor = 'rgb(5, 248, 14)';
+        readyButton02.disabled = true;
+        readyStatus02 = true;
+    }
+    else {
+        readyButton02.innerText = 'Bet first'
+    }
+
+})
+
+
+
+
+
+
+// start of the race
+let intervalId = null;
+let popStatement = true;
+
+function checkAndTriggerEvent() {
+    if (readyStatus01 && readyStatus02) {
+      console.log("Both variables are true. Event triggered!");
+      popUpWindow.style.visibility = 'visible'
+      popStatement = false;
+      clearInterval(intervalId);
+    }
+  }
+
+  intervalId = setInterval(checkAndTriggerEvent, 100);
+
+  closeWindow.addEventListener('click', function(evt){
+    popUpWindow.style.visibility = 'hidden'
+    popStatement = true;
+  })
