@@ -41,6 +41,8 @@ let counter02 = document.getElementById('player02stat')
 
 let moneyPlayer01 = document.getElementById('money01')
 let moneyPlayer02 = document.getElementById('money02')
+let xpPlayer01 = document.getElementById('xp01')
+let xpPlayer02 = document.getElementById('xp02')
 
 //levels display 
 
@@ -405,7 +407,9 @@ function Race() {
 // result calculating
     let newSpeed01 = playerSpeed01 + player01.engine / var01 + player01.transmission / var03 + player01.brakes / var02 + player01.brakes /var01 + player01.tires/var03 + player01.tires/var02 + Math.random().toFixed(2)
     let newSpeed02 = playerSpeed02 + player01.engine / var01 + player02.transmission / var03 + player02.brakes / var02 + player02.brakes /var01 + player02.tires/var03 + player02.tires/var02 + Math.random().toFixed(2)
-        if(newSpeed02 > newSpeed01) {
+    player01.xpPoints += Math.floor(Math.random()*10)
+    player02.xpPoints += Math.floor(Math.random()*10)    
+    if(newSpeed02 > newSpeed01) {
             winner = false;
         }
 
@@ -567,6 +571,7 @@ function checkAndTriggerEvent() {
             else {counter01.innerText = `RED CAR: ${player01WinCount} wins`}
             
             moneyPlayer01.innerText = `${player01.money}$  |`
+            xpPlayer01.innerText = `| XP points: ${player01.xpPoints}`
             popUpWindow.style.visibility = 'visible'
             soundOfRace.pause()
             closeWindow.style.visibility = 'hidden'
@@ -597,6 +602,7 @@ function checkAndTriggerEvent() {
             if(player02WinCount === 1) {counter01.innerText = `GREEN CAR: ${player02WinCount} win`}
             else {counter01.innerText = `GREEN CAR: ${player02WinCount} wins`}
             moneyPlayer02.innerText = `${player02.money}$  |`
+            xpPlayer02.innerText = `| XP points: ${player02.xpPoints}`
             popUpWindow.style.visibility = 'visible'
             closeWindow.style.visibility = 'hidden'
             closeWindow2.style.visibility = 'visible'
