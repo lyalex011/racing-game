@@ -1,6 +1,9 @@
 ## Project Name
 Racing-game Wrummm (aka HotWheels simulator)
 
+# Game web site
+[Game link](https://lyalex011.github.io/racing-game)
+
 # Features
 Welcome to my web browser game - a thrilling two-player racing simulator! In this game, players can upgrade their cars' engines, transmissions, brakes, and tires to secure victory on various tracks with unpredictable weather and road conditions. The racing aspect is a realistic simulator, where players cannot directly influence the outcome of the races. However, strategic upgrades can significantly impact their chances of success.
 As you compete in races, every win rewards you with $100, while every loss results in a loss of $100. The race to financial victory begins as each player strives to be the first to accumulate $0 in their bank account.
