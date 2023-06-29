@@ -5,7 +5,7 @@ const click = document.getElementById('click');
 
 
 music.currentTime = 0;
-music.volume = 0.01;
+music.volume = 0.1;
 music.play();
 
 // race animation container
