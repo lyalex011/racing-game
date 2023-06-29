@@ -1,11 +1,13 @@
 // race animation container
 
-let animation = document.querySelector('.roadback')
+let animation = document.querySelector('.top-main5')
 
 // popup elements
 let popUpWindow = document.querySelector('.overlay')
 let closeWindow = document.querySelector('.close')
-
+let closeWindow2 = document.querySelector('.close2')
+let popupH1 = document.getElementById('popupheader')
+let popupH3 = document.getElementById('popupcontent')
 //bets
 
 let betPlayerOne = 0;
@@ -14,6 +16,7 @@ let playerSpeed01 = 1;
 let playerSpeed02 = 1;
 let readyStatus01 = false;
 let readyStatus02 = false;
+let winner = true;
 
 // money and xp displays
 
@@ -30,6 +33,11 @@ let enginelvl02 = 1;
 let translvl02 = 1;
 let brakeslvl02 = 1;
 let tireslvl02 = 1;
+
+// track conditions displays
+let weatherDisplay = document.getElementById('weatherId')
+let roadConditionDisplay = document.getElementById('conditionId') 
+let difficultyDisplay = document.getElementById('difficultyId')
 
 // class for players
 class Player {
@@ -111,11 +119,13 @@ let engineUpdateButton01 = document.getElementById('engine01')
 let transUpdateButton01 = document.getElementById('trans01')
 let brakesUpdateButton01 = document.getElementById('brakes01')
 let tiresUpdateButton01 = document.getElementById('tires01')
+
 // buttons player 02
 let engineUpdateButton02 = document.getElementById('engine02')
 let transUpdateButton02 = document.getElementById('trans02')
 let brakesUpdateButton02 = document.getElementById('brakes02')
 let tiresUpdateButton02 = document.getElementById('tires02')
+
 // lvl diplay Player 01
 let lvlEngine01 = document.getElementById('lvle01')
 let lvlTransmission01 = document.getElementById('lvlt01')
@@ -305,33 +315,33 @@ function Race() {
 
 // condition for weather display
         if(var01 === 1) {
-
+            weatherDisplay.innerText = 'Weather: SUNNY'
         }else if(var01 === 2) {
-
+            weatherDisplay.innerText = 'Weather: WINDY'
         }else if(var01 === 3) {
-
+            weatherDisplay.innerText = 'Weather: RAIN'
         }else {
-
+            weatherDisplay.innerText = 'Weather: SNOW'
         }
 
         if(var02 === 1) {
-
+            roadConditionDisplay.innerText = 'Road quality: PERFECT'
         }else if(var02 === 2) {
-
+            roadConditionDisplay.innerText = 'Road quality: GOOD'
         }else if(var02 === 3) {
-
+            roadConditionDisplay.innerText = 'Road quality: LOW'
         }else {
-
+            roadConditionDisplay.innerText = 'Road quality: AWFUL'
         }
 
         if(var03 === 1) {
-
+            difficultyDisplay.innerText = 'Difficulty: EASY'
         }else if(var03 === 2) {
-
+            difficultyDisplay.innerText = 'Difficulty: MODERATE'
         }else if(var03 === 3) {
-
+            difficultyDisplay.innerText = 'Difficulty: HARD'
         }else {
-
+            difficultyDisplay.innerText = 'Difficulty: EXTREME'
         }
 
 // result calculating
@@ -359,7 +369,7 @@ betButton01.addEventListener('click', function(evt){
     betButton01.innerText = 'Bet accepted'
     betButton01.style.backgroundColor = '#F2BE22';
     betButton01.disabled = true;
-    readyButton01.innerText = 'Ready'
+    readyButton01.innerText = 'READY!'
 })
 
 betButton02.addEventListener('click', function(evt){
@@ -369,7 +379,7 @@ betButton02.addEventListener('click', function(evt){
     betButton02.innerText = 'Bet accepted'
     betButton02.style.backgroundColor = '#F2BE22';
     betButton02.disabled = true;
-    readyButton02.innerText = 'Ready'
+    readyButton02.innerText = 'READY!'
 })
 
 
@@ -405,7 +415,9 @@ readyButton02.addEventListener('click', function(evt){
 let intervalId = null;
 let popStatement = true;
 
+
 function checkAndTriggerEvent() {
+    console.log('interval')
     if (readyStatus01 && readyStatus02) {
       console.log("Both variables are true. Event triggered!");
       popUpWindow.style.visibility = 'visible'
@@ -416,7 +428,93 @@ function checkAndTriggerEvent() {
 
   intervalId = setInterval(checkAndTriggerEvent, 100);
 
+  function animationTimer(property) {
+    animation.style.backgroundImage = property;
+  };
+
   closeWindow.addEventListener('click', function(evt){
     popUpWindow.style.visibility = 'hidden'
+    betButton01.innerText = 'Bet 100$ for a win!'
+    betButton01.style.backgroundColor = '#fa6400';
+    betButton02.innerText = 'Bet 100$ for a win!'
+    betButton02.style.backgroundColor = '#fa6400';
+
+    engineUpdateButton01.style.backgroundColor = '#fa6400';
+    transUpdateButton01.style.backgroundColor = '#fa6400'; 
+    brakesUpdateButton01.style.backgroundColor = '#fa6400';
+    tiresUpdateButton01.style.backgroundColor = '#fa6400';
+    engineUpdateButton02.style.backgroundColor = '#fa6400';
+    transUpdateButton02.style.backgroundColor = '#fa6400';
+    brakesUpdateButton02.style.backgroundColor = '#fa6400';
+    tiresUpdateButton02.style.backgroundColor = '#fa6400';
+    readyButton01.style.backgroundColor = '#fa6400';
+    readyButton02.style.backgroundColor = '#fa6400';
+
     popStatement = true;
+    let winCar = Race()
+    console.log('game starts', winCar)
+    if(winCar) {
+        animation.style.backgroundImage = 'url(img/redwins.gif)'
+        setTimeout(function() {
+            animation.style.backgroundImage = 'url(img/static.gif)'
+            player01.money += 200;
+            moneyPlayer01.innerText = `${player01.money}$  |`
+            popUpWindow.style.visibility = 'visible'
+            closeWindow.style.visibility = 'hidden'
+            closeWindow2.style.visibility = 'visible'
+            if(player02.money !== 0) {
+                popupH1.innerText = 'Congratulations Player 01!!!'
+                popupH3.innerText = 'Player 01 wins 200$! Close this window to continue to the next round.'
+            }
+            else if(player02.money === 0) {
+                popupH1.innerText = 'Congratulations Player 01!!!'
+                popupH3.innerText = 'Player 01 wins 200$! Player 02 defeated because his balance is 0$! Close this window to start new game.'
+            }
+        }, 9750)
+        
+    }
+    else {
+        animation.style.backgroundImage = 'url(img/greenwins.gif)'
+        setTimeout(function() {
+            animation.style.backgroundImage = 'url(img/static.gif)'
+            player02.money += 200;
+            moneyPlayer02.innerText = `${player02.money}$  |`
+            popUpWindow.style.visibility = 'visible'
+            closeWindow.style.visibility = 'hidden'
+            closeWindow2.style.visibility = 'visible'
+            if(player02.money !== 0) {
+                popupH1.innerText = 'Congratulations Player 02!!!'
+                popupH3.innerText = 'Player 02 wins 200$! Close this window to continue to the next round.'
+            }
+            else if(player02.money === 0) {
+                popupH1.innerText = 'Congratulations Player 02!!!'
+                popupH3.innerText = 'Player 02 wins 200$! Player 01 defeated because his balance is 0$! Close this window to start new game.'
+            }
+        }, 9750)
+
+    }
   })
+
+
+
+  closeWindow2.addEventListener('click', function(evt){
+    popUpWindow.style.visibility = 'hidden' 
+    betButton01.disabled = false;
+    readyButton01.disabled = false;
+    betButton02.disabled = false;
+    readyButton02.disabled = false;
+    engineUpdateButton01.disabled = false;
+    transUpdateButton01.disabled = false;
+    brakesUpdateButton01.disabled = false;
+    tiresUpdateButton01.disabled = false;
+    engineUpdateButton02.disabled = false;
+    transUpdateButton02.disabled = false;
+    brakesUpdateButton02.disabled = false;
+    tiresUpdateButton02.disabled = false;
+    readyStatus01 = false;
+    readyStatus02 = false;
+    intervalId = setInterval(checkAndTriggerEvent, 100);
+    console.log('start interval')
+    popStatement = false;
+    
+})

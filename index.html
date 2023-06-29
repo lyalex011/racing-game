@@ -31,22 +31,9 @@
                     <p id="player02stat">GREEN CAR: 0 wins</p>
                 </div>
                 <div class="weather">
-                    <div>
-                        <div class="insidediv">
-                            <p>WEATHER</p>
-
-                        </div>
-                        <div class="insidediv">
-                            <img src="img/sunny.svg" alt=""></div>
-                        </div>
-                    <div>
-                        <div class="insidediv"><p>ROAD CONDition</p></div>
-                        <div class="insidediv"><img src="img/sunny.svg" alt=""></div>
-                    </div>
-                    <div>
-                        <div class="insidediv"><p>DIFFICULTY</p></div>
-                        <div class="insidediv"><img src="img/sunny.svg" alt=""></div>
-                    </div>
+                    <div><h3 id="weatherId" class="h4weather">Weather: SUNNY</h3></div>
+                    <div><h4 id="conditionId" class="h4weather">Road quality: VERY POOR</h4></div>
+                    <div><h3 id="difficultyId" class="h4weather">Difficulty: EXTREME</h3></div>
                 </div>
 
             </div>
@@ -188,15 +175,16 @@
 
         <div id="popup1" class="overlay">
             <div class="popup">
-                <h1>Welcome to the race!</h1>
+                <h1 id="popupheader">Welcome to the race!</h1>
                 <a class="close" href="#">&times;</a>
+                <a class="close2" href="#">&times;</a>
                 <div class="content">
-                    <h3>The winner will get 200$. Close this window to start the race!</h3>
+                    <h3 id="popupcontent">The winner will get 200$. Close this window to start the race!</h3>
                 </div>
             </div>
         </div>
 
-        
+
     </main>
     <footer></footer>
 </body>
