@@ -599,8 +599,8 @@ function checkAndTriggerEvent() {
             soundOfRace.pause()
             player02.money += 200;
             player02WinCount += 1;
-            if(player02WinCount === 1) {counter01.innerText = `GREEN CAR: ${player02WinCount} win`}
-            else {counter01.innerText = `GREEN CAR: ${player02WinCount} wins`}
+            if(player02WinCount === 1) {counter02.innerText = `GREEN CAR: ${player02WinCount} win`}
+            else {counter02.innerText = `GREEN CAR: ${player02WinCount} wins`}
             moneyPlayer02.innerText = `${player02.money}$  |`
             xpPlayer02.innerText = `| XP points: ${player02.xpPoints}`
             popUpWindow.style.visibility = 'visible'
